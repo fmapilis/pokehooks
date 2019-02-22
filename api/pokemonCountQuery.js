@@ -1,0 +1,1 @@
+module.exports = `SELECT COUNT(*) from pokemon_v2_pokemonspecies`

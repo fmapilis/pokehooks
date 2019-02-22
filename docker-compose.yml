@@ -1,0 +1,27 @@
+version: "3"
+services:
+  pokehooks:
+    build:
+      context: .
+    command: /bin/bash -c "node --inspect=0.0.0.0:9239 server.js"
+    environment:
+      - NODE_ENV=development
+      - APP_PORT=18000
+      - PGUSER=ash
+      - PGHOST=db
+      - PGPASSWORD=pokemon
+      - PGDATABASE=pokeapi
+      - PGPORT=5432
+    ports:
+      - "18000:18000"
+      - "9239:9239"
+      - "34801:34801"
+    volumes:
+      - .:/app
+    stdin_open: true
+    networks:
+      - pokehooks-network
+
+networks:
+  pokehooks-network:
+    external: true
